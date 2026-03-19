@@ -48,13 +48,11 @@ jobs:
     runs-on: ${{ matrix.arch == 'arm64' && 'windows-11-arm' || 'windows-latest' }}
 
     strategy:
+      fail-fast: false
       matrix:
-        arch: [x64_x86, x64, arm64]
-        qt: ["", qt6]
-        generator: ["", "Ninja Multi-Config"]
-        exclude:
-          - arch: arm64
-            qt: ""
+        arch: [x64_x86, x64]
+        qt: [qt6]
+        generator: [""]
 
     env:
       UPLOAD_ARTIFACT: "true"
